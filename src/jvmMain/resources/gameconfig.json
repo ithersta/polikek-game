@@ -1,0 +1,217 @@
+{
+  "initialBalance": "20000",
+  "baseBuyPrice": "500",
+  "initialInflationRate": "1.03",
+  "inflationRateIncrease": "0.001",
+  "initialHype": "1.8",
+  "hypeSellFactor": "0.52",
+  "hypeBuyFactor": "1.13",
+  "maxHype": "3.4",
+  "minHype": "0.3",
+  "probabilities": {
+    "Common": 1.0,
+    "Uncommon": 0.4,
+    "Rare": 0.13,
+    "SuperRare": 0.01
+  },
+  "cards": [
+    {
+      "displayName": "pochernin.jpg",
+      "url": "/static/cards/pochernin.webp",
+      "basePrice": "500",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "цвет нации.jpg",
+      "url": "/static/cards/lysvik.webp",
+      "basePrice": "2150",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": ".jpg",
+      "url": "/static/cards/answer.webp",
+      "basePrice": "900",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "chad.jpg",
+      "url": "/static/cards/chad.webp",
+      "basePrice": "990",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "net nikakih moralnih sil.jpg",
+      "url": "/static/cards/cherv.webp",
+      "basePrice": "1460",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "pochinil bak na rabote.jpg",
+      "url": "/static/cards/ezchervinskiy.webp",
+      "basePrice": "550",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "мужчина сидит.jpg",
+      "url": "/static/cards/islam.webp",
+      "basePrice": "490",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "мужчина лежит.jpg",
+      "url": "/static/cards/islamlezhit.webp",
+      "basePrice": "1900",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "typical.jpg",
+      "url": "/static/cards/kosnitsky.webp",
+      "basePrice": "700",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "kvas.jpg",
+      "url": "/static/cards/kvas.webp",
+      "basePrice": "700",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "zapax karri.jpg",
+      "url": "/static/cards/martyn.webp",
+      "basePrice": "5600",
+      "rarity": "SuperRare"
+    },
+    {
+      "displayName": "misha.jpg",
+      "url": "/static/cards/misha.webp",
+      "basePrice": "450",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "petition.jpg",
+      "url": "/static/cards/paper.webp",
+      "basePrice": "800",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "playing polikek.jpg",
+      "url": "/static/cards/playingitreekacase.webp",
+      "basePrice": "1900",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "nu eto vse menyaet.jpg",
+      "url": "/static/cards/soleva.webp",
+      "basePrice": "950",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "template.jpg",
+      "url": "/static/cards/template.webp",
+      "basePrice": "850",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "tochki.jpg",
+      "url": "/static/cards/tochki.webp",
+      "basePrice": "999",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "vasiliy.jpg",
+      "url": "/static/cards/volgarenok.webp",
+      "basePrice": "555",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "molodoy islam.jpg",
+      "url": "/static/cards/molodoyislam.webp",
+      "basePrice": "665",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "parody.jpg",
+      "url": "/static/cards/parody.webp",
+      "basePrice": "896",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "i kuda on edet.jpg",
+      "url": "/static/cards/misha2.webp",
+      "basePrice": "530",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "vladikonline.jpg",
+      "url": "/static/cards/vladikonline.webp",
+      "basePrice": "1500",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "one more pochernin.jpg",
+      "url": "/static/cards/pochernin2.webp",
+      "basePrice": "400",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "vladikoffline.jpg",
+      "url": "/static/cards/vlad2017.webp",
+      "basePrice": "1200",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "orange333.jpg",
+      "url": "/static/cards/orange.webp",
+      "basePrice": "700",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "okk.jpg",
+      "url": "/static/cards/sasha.webp",
+      "basePrice": "900",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "RKF45.jpg",
+      "url": "/static/cards/rkf.webp",
+      "basePrice": "3200",
+      "rarity": "SuperRare"
+    },
+    {
+      "displayName": "мужик стоит.jpg",
+      "url": "/static/cards/levashov.webp",
+      "basePrice": "560",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "misha igor.jpg",
+      "url": "/static/cards/red.webp",
+      "basePrice": "439",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "not even.jpg",
+      "url": "/static/cards/template2.webp",
+      "basePrice": "1100",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "it.jpg",
+      "url": "/static/cards/metal.webp",
+      "basePrice": "1013",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "slaves.jpg",
+      "url": "/static/cards/slaves.webp",
+      "basePrice": "800",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "samie priyatnie slova.jpg",
+      "url": "/static/cards/xz.webp",
+      "basePrice": "1234",
+      "rarity": "Rare"
+    }
+  ]
+}
