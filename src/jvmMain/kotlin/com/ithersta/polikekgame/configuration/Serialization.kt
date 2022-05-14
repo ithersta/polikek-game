@@ -1,6 +1,5 @@
-package com.ithersta.polikekgame
+package com.ithersta.polikekgame.configuration
 
-import com.ionspin.kotlin.bignum.serialization.kotlinx.arrayBasedSerializerModule
 import com.ionspin.kotlin.bignum.serialization.kotlinx.humanReadableSerializerModule
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*

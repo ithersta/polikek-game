@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 
+val koinVersion = "3.2.0"
+
 plugins {
     kotlin("multiplatform") version "1.6.21"
     kotlin("plugin.serialization") version "1.6.21"
@@ -13,7 +15,6 @@ repositories {
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
     maven("https://maven.pkg.jetbrains.space/public/p/ktor/eap")
-    maven("https://plugins.gradle.org/m2/")
     maven("https://jitpack.io")
 }
 
@@ -22,7 +23,6 @@ kotlin {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
-                freeCompilerArgs = freeCompilerArgs + "-Xcontext-receivers"
             }
         }
         withJava()
@@ -40,6 +40,7 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.4")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
                 implementation("com.ionspin.kotlin:bignum-serialization-kotlinx:0.3.2")
+                implementation("io.insert-koin:koin-core:$koinVersion")
             }
         }
         val commonTest by getting {
@@ -59,6 +60,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
                 implementation("org.slf4j:slf4j-simple:1.7.36")
                 implementation("io.github.microutils:kotlin-logging-jvm:2.1.20")
+                implementation("io.insert-koin:koin-ktor:$koinVersion")
+                implementation("io.insert-koin:koin-logger-slf4j:$koinVersion")
             }
         }
         val jvmTest by getting

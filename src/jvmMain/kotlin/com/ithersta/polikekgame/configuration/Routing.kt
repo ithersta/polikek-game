@@ -1,7 +1,9 @@
-package com.ithersta.polikekgame
+package com.ithersta.polikekgame.configuration
 
+import com.ithersta.polikekgame.GameService
 import com.ithersta.polikekgame.entities.GameConfig
 import com.ithersta.polikekgame.entities.toTransferGameState
+import com.ithersta.polikekgame.jwtGameIdentifier
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -14,6 +16,7 @@ import io.ktor.util.pipeline.*
 import kotlinx.html.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.decodeFromStream
+import org.koin.ktor.ext.inject
 
 fun HTML.index() {
     head {
@@ -30,10 +33,7 @@ fun HTML.index() {
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
 fun Application.configureRouting() {
-    val resource = javaClass.getResourceAsStream("/gameconfig.json") ?: return
-    val gameConfig = JsonSerializer.decodeFromStream<GameConfig>(resource)
     routing {
         static("/static") {
             staticBasePackage = "static"
@@ -42,15 +42,12 @@ fun Application.configureRouting() {
         get("/") {
             call.respondHtml(HttpStatusCode.OK, HTML::index)
         }
-        with(gameConfig) {
-            gameApi()
-        }
+        gameApi()
     }
 }
 
-context(GameConfig)
-        private fun Routing.gameApi() {
-    val service = GameService(InMemoryGameStateRepository())
+private fun Routing.gameApi() {
+    val service by inject<GameService>()
     authenticate("jwt") {
         route("/api") {
             post("/new") {

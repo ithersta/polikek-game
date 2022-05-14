@@ -2,36 +2,48 @@ package com.ithersta.polikekgame
 
 import com.elbekD.bot.Bot
 import com.elbekD.bot.types.InlineQueryResultGame
-import java.util.concurrent.ConcurrentHashMap
+import com.ithersta.polikekgame.entities.GameIdentifier
+import com.ithersta.polikekgame.entities.Identity
+import com.ithersta.polikekgame.repository.IdentityRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
-data class Identity(
-    val firstName: String,
-    val lastName: String?,
-    val username: String?
-) {
-    override fun toString(): String {
-        return "$username ($firstName $lastName)"
-    }
-}
+class TelegramBot(private val identityRepository: IdentityRepository) {
+    private val coroutineScope = CoroutineScope(Job() + Dispatchers.Default)
 
-val identities = ConcurrentHashMap<Long, Identity>()
-
-val telegramBot = run {
-    val bot = Bot.createPolling(
+    private val bot = Bot.createPolling(
         token = System.getenv("TELEGRAM_TOKEN").toString(),
-        username = "polikek_game_bot"
-    )
-    val hostname = System.getenv("PUBLIC_HOSTNAME").toString()
-    bot.onMessage {
-        bot.sendGame(it.chat.id, "polikek")
+        username = System.getenv("TELEGRAM_USERNAME").toString()
+    ).also { bot ->
+        val hostname = System.getenv("PUBLIC_HOSTNAME").toString()
+        bot.onMessage {
+            bot.sendGame(it.chat.id, "polikek")
+        }
+        bot.onCallbackQuery {
+            identityRepository.set(it.from.id, Identity(it.from.first_name, it.from.last_name, it.from.username))
+            if (it.game_short_name != "polikek") return@onCallbackQuery
+            bot.answerCallbackQuery(it.id, url = "$hostname/?token=${it.createToken()}")
+        }
+        bot.onInlineQuery {
+            bot.answerInlineQuery(it.id, listOf(InlineQueryResultGame("polikek", "polikek")))
+        }
     }
-    bot.onCallbackQuery {
-        identities[it.from.id] = Identity(it.from.first_name, it.from.last_name, it.from.username)
-        if (it.game_short_name != "polikek") return@onCallbackQuery
-        bot.answerCallbackQuery(it.id, url = "$hostname/?token=${it.createToken()}")
+
+    fun start() {
+        bot.start()
     }
-    bot.onInlineQuery {
-        bot.answerInlineQuery(it.id, listOf(InlineQueryResultGame("polikek", "polikek")))
+
+    fun setGameScore(gameIdentifier: GameIdentifier, score: Int) {
+        coroutineScope.launch {
+            bot.setGameScore(
+                userId = gameIdentifier.userId,
+                score = score,
+                messageId = gameIdentifier.messageId,
+                chatId = gameIdentifier.chatId,
+                inlineMessageId = gameIdentifier.inlineMessageId
+            )
+        }
     }
-    bot
 }

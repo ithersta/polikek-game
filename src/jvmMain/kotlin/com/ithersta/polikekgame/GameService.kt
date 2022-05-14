@@ -1,48 +1,45 @@
 package com.ithersta.polikekgame
 
 import com.ithersta.polikekgame.entities.GameConfig
+import com.ithersta.polikekgame.entities.GameIdentifier
 import com.ithersta.polikekgame.entities.GameState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import com.ithersta.polikekgame.repository.GameStateRepository
+import com.ithersta.polikekgame.repository.IdentityRepository
 import mu.KotlinLogging
 
-context(GameConfig)
-class GameService(private val repository: GameStateRepository) {
-    private val coroutineScope = CoroutineScope(Job() + Dispatchers.Default)
+class GameService(
+    private val stateRepository: GameStateRepository,
+    private val identityRepository: IdentityRepository,
+    private val telegramBot: TelegramBot,
+    private val config: GameConfig
+) {
     private val logger = KotlinLogging.logger { }
 
     fun get(gameIdentifier: GameIdentifier): GameState? {
-        return repository.get(gameIdentifier)
+        return stateRepository.get(gameIdentifier)
     }
 
     fun start(gameIdentifier: GameIdentifier): GameState {
-        val state = GameState.fromConfig()
-        repository.set(gameIdentifier, state)
-        return state
+        return GameState.fromConfig(config).also {
+            stateRepository.set(gameIdentifier, it)
+        }
     }
 
     fun buy(gameIdentifier: GameIdentifier): GameState? {
-        val state = repository.get(gameIdentifier)?.afterPurchase() ?: return null
-        repository.set(gameIdentifier, state)
-        return state
+        return modifyState(gameIdentifier) { it?.afterPurchase() }
     }
 
     fun sell(gameIdentifier: GameIdentifier): GameState? {
-        val state = repository.get(gameIdentifier)?.afterSale() ?: return null
-        repository.set(gameIdentifier, state)
-        if (state.isDead) {
-            logger.info { "${identities[gameIdentifier.userId]} scored ${state.stats.purchases}" }
-            coroutineScope.launch {
-                telegramBot.setGameScore(
-                    userId = gameIdentifier.userId,
-                    score = state.stats.purchases,
-                    messageId = gameIdentifier.messageId,
-                    chatId = gameIdentifier.chatId,
-                    inlineMessageId = gameIdentifier.inlineMessageId
-                )
-            }
+        return modifyState(gameIdentifier) { it?.afterSale() }
+    }
+
+    private fun modifyState(gameIdentifier: GameIdentifier, transform: (GameState?) -> GameState?): GameState? {
+        val state = transform(stateRepository.get(gameIdentifier))
+        stateRepository.set(gameIdentifier, state)
+        if (state?.isDead == true) {
+            val score = state.stats.purchases
+            logger.info { "${identityRepository.get(gameIdentifier.userId)} scored $score" }
+            telegramBot.setGameScore(gameIdentifier, score)
         }
         return state
     }
