@@ -212,6 +212,66 @@
       "url": "/static/cards/xz.webp",
       "basePrice": "1234",
       "rarity": "Rare"
+    },
+    {
+      "displayName": "razzz.jpg",
+      "url": "/static/cards/razzz.webp",
+      "basePrice": "480",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "morgun hates girls and islam.jpg",
+      "url": "/static/cards/morgun.webp",
+      "basePrice": "890",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "byzaya.jpg",
+      "url": "/static/cards/vika.webp",
+      "basePrice": "520",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "\uD83D\uDE12.jpg",
+      "url": "/static/cards/yapochernin.webp",
+      "basePrice": "720",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "\uD83E\uDD14.jpg",
+      "url": "/static/cards/thinking.webp",
+      "basePrice": "1220",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "menya zastavili, ugrozhali….jpg",
+      "url": "/static/cards/forest.webp",
+      "basePrice": "720",
+      "rarity": "Uncommon"
+    },
+    {
+      "displayName": "\uD83D\uDC41️.jpg",
+      "url": "/static/cards/fish.webp",
+      "basePrice": "1500",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "EZ \uD83D\uDE0E.jpg",
+      "url": "/static/cards/ezlevashov.webp",
+      "basePrice": "1600",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "1305000.jpg",
+      "url": "/static/cards/cook.webp",
+      "basePrice": "4200",
+      "rarity": "SuperRare"
+    },
+    {
+      "displayName": "kakoy ti segodnya.jpg",
+      "url": "/static/cards/week.webp",
+      "basePrice": "1700",
+      "rarity": "Rare"
     }
   ]
 }

@@ -43,7 +43,6 @@ val GameScreen = FC<GameScreenProps> { props ->
             alignItems = AlignItems.center
             position = Position.relative
             height = 100.vh
-            maxHeight = 960.px
         }
         Chip {
             sx {
