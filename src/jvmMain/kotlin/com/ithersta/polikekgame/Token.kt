@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.interfaces.Claim
 import com.elbekD.bot.types.CallbackQuery
+import com.ithersta.polikekgame.entities.GameIdentifier
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*
@@ -20,8 +21,7 @@ private val algorithm = Algorithm.HMAC256(secret)
 
 val JwtVerifier: JWTVerifier = JWT.require(algorithm).build()
 
-context(PipelineContext<Unit, ApplicationCall>)
-val jwtGameIdentifier: GameIdentifier
+val PipelineContext<Unit, ApplicationCall>.jwtGameIdentifier: GameIdentifier
     get() {
         val payload = call.principal<JWTPrincipal>()!!.payload
         return GameIdentifier(

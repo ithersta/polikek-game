@@ -15,52 +15,50 @@ class GameState private constructor(
     val card: Card,
     val isSold: Boolean,
     val isDead: Boolean,
-    val stats: Stats
+    val stats: Stats,
+    private val config: GameConfig
 ) {
     companion object {
-        context(GameConfig)
-        fun fromConfig(): GameState {
+        fun fromConfig(config: GameConfig): GameState {
             return GameState(
-                balance = initialBalance,
-                card = generateCard(),
+                balance = config.initialBalance,
+                card = config.generateCard(),
                 isSold = false,
                 isDead = false,
-                hype = initialHype,
+                hype = config.initialHype,
                 cumulativeInflation = BigDecimal.ONE,
-                inflationRate = initialInflationRate,
-                stats = Stats()
+                inflationRate = config.initialInflationRate,
+                stats = Stats(),
+                config = config
             )
         }
     }
 
-    context(GameConfig)
     val purchasePrice: BigInteger
-        get() = (baseBuyPrice * cumulativeInflation).toBigInteger()
+        get() = (config.baseBuyPrice * cumulativeInflation).toBigInteger()
 
-    context(GameConfig)
     val salePrice: BigInteger
         get() = (card.basePrice * cumulativeInflation * hype).toBigInteger()
 
-    context(GameConfig)
     fun afterPurchase(): GameState {
         require(!isDead)
         require(balance >= purchasePrice)
         return GameState(
             balance = balance - purchasePrice,
-            card = generateCard(not = card),
+            card = config.generateCard(not = card),
             isSold = false,
             isDead = isDead,
             hype = run {
-                val factor = if (isSold) hypeSellFactor else hypeBuyFactor
-                (hype * factor).coerceIn(minHype, maxHype)
+                val factor = if (isSold) config.hypeSellFactor else config.hypeBuyFactor
+                (hype * factor).coerceIn(config.minHype, config.maxHype)
             },
             cumulativeInflation = cumulativeInflation * inflationRate,
-            inflationRate = inflationRate + inflationRateIncrease,
-            stats = stats.withPurchase(purchasePrice)
+            inflationRate = inflationRate + config.inflationRateIncrease,
+            stats = stats.withPurchase(purchasePrice),
+            config = config
         )
     }
 
-    context(GameConfig)
     fun afterSale(): GameState {
         require(!isSold)
         require(!isDead)
@@ -72,13 +70,13 @@ class GameState private constructor(
             hype = hype,
             cumulativeInflation = cumulativeInflation,
             inflationRate = inflationRate,
-            stats = stats.withSale(salePrice)
+            stats = stats.withSale(salePrice),
+            config = config
         )
     }
 }
 
-context(GameConfig)
-        private tailrec fun generateCard(not: Card? = null): Card {
+private tailrec fun GameConfig.generateCard(not: Card? = null): Card {
     val random = Random.nextDouble()
     val requiredRarity = probabilities
         .asSequence()
@@ -92,7 +90,6 @@ context(GameConfig)
     }
 }
 
-context(GameConfig)
 fun GameState.toTransferGameState(): TransferGameState {
     return TransferGameState(
         balance = balance,

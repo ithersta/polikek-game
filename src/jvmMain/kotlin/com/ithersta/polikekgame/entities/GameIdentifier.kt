@@ -1,4 +1,4 @@
-package com.ithersta.polikekgame
+package com.ithersta.polikekgame.entities
 
 data class GameIdentifier(
     val userId: Long,
