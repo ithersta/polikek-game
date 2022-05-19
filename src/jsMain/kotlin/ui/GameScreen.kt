@@ -3,6 +3,7 @@ package ui
 import GameClient
 import TransferGameState
 import csstype.*
+import emotion.react.css
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -62,16 +63,21 @@ val GameScreen = FC<GameScreenProps> { props ->
                 this.client = props.client
             }
         } else {
-            CardMedia {
-                sx {
+            img {
+                css {
                     flexGrow = number(1.0)
                     objectFit = when (props.state.card.imageFit) {
                         ImageFit.Cover -> ObjectFit.cover
                         ImageFit.Contain -> ObjectFit.contain
                     }
+                    minHeight = if (props.state.card.displayName.contains("EZ")) {
+                        1600.px
+                    } else {
+                        120.px
+                    }
+                    width = 100.pct
                 }
-                component = img
-                image = props.state.card.url
+                src = props.state.card.url
             }
         }
         Typography {
