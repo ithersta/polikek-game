@@ -85,6 +85,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                 marginTop = 12.px
                 fontSize = 14.pt
                 color = props.state.card.rarity.color(isDarkTheme)
+                textAlign = TextAlign.center
             }
             +props.state.card.displayName
         }
