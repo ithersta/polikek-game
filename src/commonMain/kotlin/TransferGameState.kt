@@ -13,13 +13,3 @@ class TransferGameState(
     val stats: Stats
 )
 
-@Serializable
-data class TransferCard(
-    val displayName: String,
-    val url: String,
-    val rarity: Rarity
-)
-
-enum class Rarity {
-    Common, Uncommon, Rare, SuperRare
-}

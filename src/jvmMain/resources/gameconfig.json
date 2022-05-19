@@ -67,7 +67,8 @@
       "displayName": "typical.jpg",
       "url": "/static/cards/kosnitsky.webp",
       "basePrice": "700",
-      "rarity": "Uncommon"
+      "rarity": "Uncommon",
+      "imageFit": "Contain"
     },
     {
       "displayName": "kvas.jpg",
@@ -109,7 +110,8 @@
       "displayName": "template.jpg",
       "url": "/static/cards/template.webp",
       "basePrice": "850",
-      "rarity": "Uncommon"
+      "rarity": "Uncommon",
+      "imageFit": "Contain"
     },
     {
       "displayName": "tochki.jpg",
@@ -193,7 +195,8 @@
       "displayName": "not even.jpg",
       "url": "/static/cards/template2.webp",
       "basePrice": "1100",
-      "rarity": "Rare"
+      "rarity": "Rare",
+      "imageFit": "Contain"
     },
     {
       "displayName": "it.jpg",
@@ -211,7 +214,8 @@
       "displayName": "samie priyatnie slova.jpg",
       "url": "/static/cards/xz.webp",
       "basePrice": "1234",
-      "rarity": "Rare"
+      "rarity": "Rare",
+      "imageFit": "Contain"
     },
     {
       "displayName": "razzz.jpg",
@@ -271,7 +275,8 @@
       "displayName": "kakoy ti segodnya.jpg",
       "url": "/static/cards/week.webp",
       "basePrice": "1700",
-      "rarity": "Rare"
+      "rarity": "Rare",
+      "imageFit": "Contain"
     }
   ]
 }

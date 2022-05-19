@@ -65,7 +65,10 @@ val GameScreen = FC<GameScreenProps> { props ->
             CardMedia {
                 sx {
                     flexGrow = number(1.0)
-                    objectFit = ObjectFit.cover
+                    objectFit = when (props.state.card.imageFit) {
+                        ImageFit.Cover -> ObjectFit.cover
+                        ImageFit.Contain -> ObjectFit.contain
+                    }
                 }
                 component = img
                 image = props.state.card.url

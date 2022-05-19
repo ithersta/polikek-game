@@ -93,11 +93,7 @@ private tailrec fun GameConfig.generateCard(not: Card? = null): Card {
 fun GameState.toTransferGameState(): TransferGameState {
     return TransferGameState(
         balance = balance,
-        card = TransferCard(
-            displayName = card.displayName,
-            url = card.url,
-            rarity = card.rarity
-        ),
+        card = card.toTransferCard(),
         isSold = isSold,
         salePrice = salePrice,
         purchasePrice = purchasePrice,
