@@ -158,8 +158,8 @@
     {
       "displayName": "vladikoffline.jpg",
       "url": "/static/cards/vlad2017.webp",
-      "basePrice": "1200",
-      "rarity": "Rare"
+      "basePrice": "900",
+      "rarity": "Uncommon"
     },
     {
       "displayName": "orange333.jpg",
@@ -239,7 +239,7 @@
       "displayName": "\uD83D\uDE12.jpg",
       "url": "/static/cards/yapochernin.webp",
       "basePrice": "720",
-      "rarity": "Uncommon"
+      "rarity": "Common"
     },
     {
       "displayName": "\uD83D\uDE44.jpg",
@@ -317,8 +317,8 @@
     {
       "displayName": "ранение.jpg",
       "url": "/static/cards/ranenie.webp",
-      "basePrice": "870",
-      "rarity": "Common"
+      "basePrice": "1900",
+      "rarity": "Rare"
     }
   ]
 }
