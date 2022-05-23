@@ -313,6 +313,12 @@
       "url": "/static/cards/who.webp",
       "basePrice": "690",
       "rarity": "Common"
+    },
+    {
+      "displayName": "ранение.jpg",
+      "url": "/static/cards/ranenie.webp",
+      "basePrice": "870",
+      "rarity": "Common"
     }
   ]
 }
