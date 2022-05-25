@@ -70,7 +70,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                         ImageFit.Cover -> ObjectFit.cover
                         ImageFit.Contain -> ObjectFit.contain
                     }
-                    minHeight = if (props.state.card.displayName.contains("EZ")) {
+                    minHeight = if (Curse.LevashovHeight in props.state.card.curses) {
                         2400.px
                     } else {
                         120.px

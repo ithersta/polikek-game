@@ -263,7 +263,8 @@
       "displayName": "EZ \uD83D\uDE0E.jpg",
       "url": "/static/cards/ezlevashov.webp",
       "basePrice": "1600",
-      "rarity": "Rare"
+      "rarity": "Rare",
+      "curses": ["LevashovHeight"]
     },
     {
       "displayName": "1305000₽.jpg",

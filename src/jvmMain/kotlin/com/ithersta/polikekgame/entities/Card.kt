@@ -1,5 +1,6 @@
 package com.ithersta.polikekgame.entities
 
+import Curse
 import ImageFit
 import Rarity
 import TransferCard
@@ -13,7 +14,8 @@ class Card(
     val url: String,
     @Contextual val basePrice: BigDecimal,
     val rarity: Rarity,
-    val imageFit: ImageFit = ImageFit.Cover
+    val imageFit: ImageFit = ImageFit.Cover,
+    val curses: Collection<Curse> = emptyList()
 )
 
 fun Card.toTransferCard(): TransferCard {
@@ -21,6 +23,7 @@ fun Card.toTransferCard(): TransferCard {
         displayName = displayName,
         url = url,
         rarity = rarity,
-        imageFit = imageFit
+        imageFit = imageFit,
+        curses = curses
     )
 }
