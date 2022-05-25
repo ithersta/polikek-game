@@ -1,7 +1,6 @@
 package com.ithersta.polikekgame.entities
 
-import Stats
-import TransferCard
+import TransferStats
 import TransferGameState
 import com.ionspin.kotlin.bignum.decimal.BigDecimal
 import com.ionspin.kotlin.bignum.integer.BigInteger
@@ -16,19 +15,20 @@ class GameState private constructor(
     val isSold: Boolean,
     val isDead: Boolean,
     val stats: Stats,
-    private val config: GameConfig
+    val config: GameConfig
 ) {
     companion object {
         fun fromConfig(config: GameConfig): GameState {
+            val card = config.generateCard()
             return GameState(
                 balance = config.initialBalance,
-                card = config.generateCard(),
+                card = card,
                 isSold = false,
                 isDead = false,
                 hype = config.initialHype,
                 cumulativeInflation = BigDecimal.ONE,
                 inflationRate = config.initialInflationRate,
-                stats = Stats(),
+                stats = Stats().withPurchase(BigInteger.ZERO, card),
                 config = config
             )
         }
@@ -43,9 +43,10 @@ class GameState private constructor(
     fun afterPurchase(): GameState {
         require(!isDead)
         require(balance >= purchasePrice)
+        val generatedCard = config.generateCard(not = card)
         return GameState(
             balance = balance - purchasePrice,
-            card = config.generateCard(not = card),
+            card = generatedCard,
             isSold = false,
             isDead = isDead,
             hype = run {
@@ -54,7 +55,7 @@ class GameState private constructor(
             },
             cumulativeInflation = cumulativeInflation * inflationRate,
             inflationRate = inflationRate + config.inflationRateIncrease,
-            stats = stats.withPurchase(purchasePrice),
+            stats = stats.withPurchase(purchasePrice, generatedCard),
             config = config
         )
     }
@@ -98,6 +99,6 @@ fun GameState.toTransferGameState(): TransferGameState {
         salePrice = salePrice,
         purchasePrice = purchasePrice,
         isDead = isDead,
-        stats = stats
+        stats = stats.toTransferStats(config)
     )
 }

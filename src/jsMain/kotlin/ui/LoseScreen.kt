@@ -1,6 +1,7 @@
 package ui
 
 import GameClient
+import Rarity
 import TransferGameState
 import csstype.*
 import kotlinx.coroutines.launch
@@ -35,17 +36,25 @@ val LoseScreen = FC<LoseScreenProps> { props ->
             padding = 16.px
         }
         Typography {
-            sx { margin = 8.px }
             variant = TypographyVariant.h4
             +"Вы проиграли :("
         }
         Typography {
-            sx { margin = 8.px }
+            variant = TypographyVariant.h6
             +"Продержались карточек: ${props.state.stats.purchases}"
+        }
+        Typography {
+            sx {
+                margin = 24.px
+                whiteSpace = WhiteSpace.preLine
+            }
+            +props.state.stats.cardsSeenByRarity.entries.joinToString(separator = "\n") { (rarity, values) ->
+                "${rarity.localizedName()}: ${values.first}/${values.second}"
+            }
         }
         LoadingButton {
             sx {
-                margin = 48.px
+                margin = 24.px
             }
             loading = isLoading
             variant = ButtonVariant.contained
@@ -67,4 +76,11 @@ val LoseScreen = FC<LoseScreenProps> { props ->
             +"Начать заново"
         }
     }
+}
+
+private fun Rarity.localizedName(): String = when (this) {
+    Rarity.Common -> "Обычных"
+    Rarity.Uncommon -> "Необычных"
+    Rarity.Rare -> "Редких"
+    Rarity.SuperRare -> "Супер Редких"
 }

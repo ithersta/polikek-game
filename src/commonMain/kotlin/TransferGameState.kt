@@ -10,6 +10,6 @@ class TransferGameState(
     @Contextual val salePrice: BigInteger,
     @Contextual val purchasePrice: BigInteger,
     val isDead: Boolean,
-    val stats: Stats
+    val stats: TransferStats
 )
 
