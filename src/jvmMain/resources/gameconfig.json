@@ -320,6 +320,12 @@
       "url": "/static/cards/ranenie.webp",
       "basePrice": "1900",
       "rarity": "Rare"
+    },
+    {
+      "displayName": "sueta.jpg",
+      "url": "/static/cards/sueta.webp",
+      "basePrice": "670",
+      "rarity": "Common"
     }
   ]
 }
