@@ -326,6 +326,44 @@
       "url": "/static/cards/sueta.webp",
       "basePrice": "670",
       "rarity": "Common"
+    },
+    {
+      "displayName": "❄️❄️❄️.jpg",
+      "url": "/static/cards/winter.webp",
+      "basePrice": "770",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "помылся️.jpg",
+      "url": "/static/cards/rednose.webp",
+      "basePrice": "790",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "☝️✌️☝️☝️☝️☝️.jpg",
+      "url": "/static/cards/armchair.webp",
+      "basePrice": "550",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "и что.jpg",
+      "url": "/static/cards/3guys.webp",
+      "basePrice": "900",
+      "rarity": "Uncommon",
+      "imageFit": "Contain"
+    },
+    {
+      "displayName": "4guys.jpg",
+      "url": "/static/cards/4guys.webp",
+      "basePrice": "800",
+      "rarity": "Common"
+    },
+    {
+      "displayName": "если присмотреться, на этом фото 13 человек.jpg",
+      "url": "/static/cards/12guys.webp",
+      "basePrice": "1020",
+      "rarity": "Uncommon",
+      "imageFit": "Contain"
     }
   ]
 }
