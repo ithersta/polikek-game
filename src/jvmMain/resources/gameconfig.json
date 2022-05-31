@@ -16,7 +16,7 @@
   },
   "cards": [
     {
-      "displayName": "pochernin.jpg",
+      "displayName": "почернин.jpg",
       "url": "/static/cards/pochernin.webp",
       "basePrice": "500",
       "rarity": "Common"
@@ -40,13 +40,13 @@
       "rarity": "Uncommon"
     },
     {
-      "displayName": "net nikakih moralnih sil.jpg",
+      "displayName": "нет никаких моральных сил.jpg",
       "url": "/static/cards/cherv.webp",
       "basePrice": "1460",
       "rarity": "Rare"
     },
     {
-      "displayName": "pochinil bak na rabote.jpg",
+      "displayName": "починил бак на работе.jpg",
       "url": "/static/cards/ezchervinskiy.webp",
       "basePrice": "550",
       "rarity": "Uncommon"
@@ -71,19 +71,19 @@
       "imageFit": "Contain"
     },
     {
-      "displayName": "kvas.jpg",
+      "displayName": "лидский.jpg",
       "url": "/static/cards/kvas.webp",
       "basePrice": "700",
       "rarity": "Uncommon"
     },
     {
-      "displayName": "zapax karri.jpg",
+      "displayName": "разыменовываемываемые.jpg",
       "url": "/static/cards/martyn.webp",
       "basePrice": "5600",
       "rarity": "SuperRare"
     },
     {
-      "displayName": "misha.jpg",
+      "displayName": "миша.jpg",
       "url": "/static/cards/misha.webp",
       "basePrice": "450",
       "rarity": "Common"
@@ -95,13 +95,13 @@
       "rarity": "Uncommon"
     },
     {
-      "displayName": "playing polikek.jpg",
+      "displayName": "playing polikek (100 highscore).jpg",
       "url": "/static/cards/playingitreekacase.webp",
       "basePrice": "1900",
       "rarity": "Rare"
     },
     {
-      "displayName": "nu eto vse menyaet.jpg",
+      "displayName": "алло.jpg",
       "url": "/static/cards/soleva.webp",
       "basePrice": "950",
       "rarity": "Uncommon"
@@ -114,19 +114,19 @@
       "imageFit": "Contain"
     },
     {
-      "displayName": "tochki.jpg",
+      "displayName": "точки.jpg",
       "url": "/static/cards/tochki.webp",
       "basePrice": "999",
       "rarity": "Uncommon"
     },
     {
-      "displayName": "vasiliy.jpg",
+      "displayName": "василий.jpg",
       "url": "/static/cards/volgarenok.webp",
       "basePrice": "555",
       "rarity": "Common"
     },
     {
-      "displayName": "molodoy islam.jpg",
+      "displayName": "молодой ислам.jpg",
       "url": "/static/cards/molodoyislam.webp",
       "basePrice": "665",
       "rarity": "Common"
@@ -138,7 +138,7 @@
       "rarity": "Uncommon"
     },
     {
-      "displayName": "i kuda on edet.jpg",
+      "displayName": "миша, да отменили уже маски, снимай.jpg",
       "url": "/static/cards/misha2.webp",
       "basePrice": "530",
       "rarity": "Common"
@@ -156,7 +156,7 @@
       "rarity": "Common"
     },
     {
-      "displayName": "vladikoffline.jpg",
+      "displayName": "vladikoffline (невалинк).jpg",
       "url": "/static/cards/vlad2017.webp",
       "basePrice": "900",
       "rarity": "Uncommon"
@@ -174,7 +174,7 @@
       "rarity": "Uncommon"
     },
     {
-      "displayName": "RKF45.jpg",
+      "displayName": "почему такая пауза? я понимаю, ребят, вы ко мне уже за два семестра привыкли, да и на экзамене тоже, Сергей Михалыч обязательно какой-нибудь провокационный вопрос задаст, подлянка какая-нибудь будет, да? неет, не всегда. для того чтобы провокационные вопросы были, надо время от времени их сопровождать простыми, чтобы вы не были готовы.jpg",
       "url": "/static/cards/rkf.webp",
       "basePrice": "3200",
       "rarity": "SuperRare"
@@ -186,7 +186,7 @@
       "rarity": "Common"
     },
     {
-      "displayName": "misha igor.jpg",
+      "displayName": "михаигорь.jpg",
       "url": "/static/cards/red.webp",
       "basePrice": "439",
       "rarity": "Common"
@@ -199,7 +199,7 @@
       "imageFit": "Contain"
     },
     {
-      "displayName": "it.jpg",
+      "displayName": "пишите в комментариях, для чего эта штука.jpg",
       "url": "/static/cards/metal.webp",
       "basePrice": "1013",
       "rarity": "Uncommon"
@@ -211,7 +211,7 @@
       "rarity": "Common"
     },
     {
-      "displayName": "samie priyatnie slova.jpg",
+      "displayName": "фейк.jpg",
       "url": "/static/cards/xz.webp",
       "basePrice": "1234",
       "rarity": "Rare",
@@ -248,7 +248,7 @@
       "rarity": "Rare"
     },
     {
-      "displayName": "menya zastavili, ugrozhali….jpg",
+      "displayName": "без шапки… зимой….jpg",
       "url": "/static/cards/forest.webp",
       "basePrice": "720",
       "rarity": "Uncommon"
@@ -273,7 +273,7 @@
       "rarity": "SuperRare"
     },
     {
-      "displayName": "kakoy ti segodnya.jpg",
+      "displayName": "какой ты сегодня.jpg",
       "url": "/static/cards/week.webp",
       "basePrice": "1700",
       "rarity": "Rare",
@@ -286,7 +286,7 @@
       "rarity": "Common"
     },
     {
-      "displayName": "igor.jpg",
+      "displayName": "игорь.jpg",
       "url": "/static/cards/igor.webp",
       "basePrice": "470",
       "rarity": "Common"
@@ -304,7 +304,7 @@
       "rarity": "SuperRare"
     },
     {
-      "displayName": "vkusno?.jpg",
+      "displayName": "вкусно?.jpg",
       "url": "/static/cards/bag.webp",
       "basePrice": "870",
       "rarity": "Uncommon"
@@ -322,7 +322,7 @@
       "rarity": "Rare"
     },
     {
-      "displayName": "sueta.jpg",
+      "displayName": "суета.jpg",
       "url": "/static/cards/sueta.webp",
       "basePrice": "670",
       "rarity": "Common"
@@ -364,6 +364,18 @@
       "basePrice": "1020",
       "rarity": "Uncommon",
       "imageFit": "Contain"
+    },
+    {
+      "displayName": "вкусно!.jpg",
+      "url": "/static/cards/vkusno.webp",
+      "basePrice": "1300",
+      "rarity": "Rare"
+    },
+    {
+      "displayName": "\uD83C\uDF77.jpg",
+      "url": "/static/cards/exquisite.webp",
+      "basePrice": "890",
+      "rarity": "Uncommon"
     }
   ]
 }
