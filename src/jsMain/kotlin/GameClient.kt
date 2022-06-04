@@ -6,6 +6,9 @@ import io.ktor.client.plugins.auth.providers.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.serialization.json.Json
 
 class GameClient(token: String) {
@@ -23,20 +26,26 @@ class GameClient(token: String) {
             }
         }
     }
+    private val state_ = MutableStateFlow<TransferGameState?>(null)
+    val state = state_.asStateFlow()
 
-    suspend fun start(): TransferGameState {
-        return client.post("/api/new").body()
+    suspend fun start() {
+        state_.value = client.post("/api/new").body()
     }
 
-    suspend fun buy(): TransferGameState? {
-        return client.post("/api/buy").body()
+    suspend fun buy() {
+        state_.value = client.post("/api/buy").body()
     }
 
-    suspend fun sell(): TransferGameState? {
-        return client.post("/api/sell").body()
+    suspend fun sell() {
+        state_.value = client.post("/api/sell").body()
     }
 
-    suspend fun get(): TransferGameState? {
-        return client.get("/api/state").body()
+    suspend fun get() {
+        state_.value = try {
+            client.get("/api/state").body()
+        } catch (e: Exception) {
+            null
+        }
     }
 }

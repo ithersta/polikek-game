@@ -22,12 +22,15 @@ fun HTML.index() {
     head {
         meta("viewport", "initial-scale=1, width=device-width")
         title("Поликек")
-        styleLink("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap")
-        styleLink("/static/styles.css")
+        script(src = "/static/skiko.js") {}
     }
     body {
         div {
-            id = "root"
+            canvas {
+                id = "ComposeTarget"
+                width = "100%"
+                height = "100%"
+            }
         }
         script(src = "/static/polikek-game.js") {}
     }

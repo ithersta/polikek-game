@@ -5,6 +5,7 @@ val koinVersion = "3.2.0"
 plugins {
     kotlin("multiplatform") version "1.6.21"
     kotlin("plugin.serialization") version "1.6.21"
+    id("org.jetbrains.compose") version "1.2.0-alpha01-dev703"
     application
 }
 
@@ -15,7 +16,24 @@ repositories {
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
     maven("https://maven.pkg.jetbrains.space/public/p/ktor/eap")
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     maven("https://jitpack.io")
+}
+
+val resourcesDir = "$buildDir/resources/static/"
+val skikoWasm by configurations.creating
+
+dependencies {
+    skikoWasm("org.jetbrains.skiko:skiko-js-wasm-runtime:0.7.16")
+}
+
+val unzipTask = tasks.register("unzipWasm", Copy::class) {
+    destinationDir = file(resourcesDir)
+    from(skikoWasm.map { zipTree(it) })
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().configureEach {
+    dependsOn(unzipTask)
 }
 
 kotlin {
@@ -41,6 +59,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
                 implementation("com.ionspin.kotlin:bignum-serialization-kotlinx:0.3.2")
                 implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation(compose.runtime)
+                implementation("org.jetbrains.skiko:skiko:0.7.16")
             }
         }
         val commonTest by getting {
@@ -50,6 +70,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
+                dependsOn(commonMain)
                 implementation("io.ktor:ktor-server-netty:2.0.1")
                 implementation("io.ktor:ktor-server-content-negotiation:2.0.1")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
@@ -67,14 +88,16 @@ kotlin {
         val jvmTest by getting
         val jsMain by getting {
             dependencies {
+                dependsOn(commonMain)
                 implementation("io.ktor:ktor-client-core:2.0.1")
                 implementation("io.ktor:ktor-client-content-negotiation:2.0.1")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
                 implementation("io.ktor:ktor-client-auth:2.0.1")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.1.0-pre.334")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.1.0-pre.334")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-css:18.0.0-pre.331-kotlin-1.6.20")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-mui:5.6.4-pre.334")
+                implementation(compose.web.core)
+                implementation(compose.material)
+                implementation(compose.runtime)
+                resources.setSrcDirs(resources.srcDirs)
+                resources.srcDirs(unzipTask.map { it.destinationDir })
             }
         }
         val jsTest by getting
