@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun StartScreen(
+    isLoading: Boolean,
     start: () -> Unit
 ) {
     Column(
@@ -28,7 +29,11 @@ fun StartScreen(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center
         )
-        Button(onClick = start, modifier = Modifier.fillMaxWidth()) {
+        Button(
+            onClick = start,
+            modifier = Modifier.fillMaxWidth(),
+            enabled = !isLoading
+        ) {
             Text("Начать")
         }
     }

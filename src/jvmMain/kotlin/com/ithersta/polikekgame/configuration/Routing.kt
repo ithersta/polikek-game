@@ -23,6 +23,7 @@ fun HTML.index() {
         meta("viewport", "initial-scale=1, width=device-width")
         title("Поликек")
         script(src = "/static/skiko.js") {}
+        styleLink("/static/styles.css")
     }
     body {
         div {

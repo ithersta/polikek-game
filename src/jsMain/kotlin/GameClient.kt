@@ -26,25 +26,23 @@ class GameClient(token: String) {
             }
         }
     }
-    private val state_ = MutableStateFlow<TransferGameState?>(null)
-    val state = state_.asStateFlow()
 
-    suspend fun start() {
-        state_.value = client.post("/api/new").body()
+    suspend fun start(): TransferGameState {
+        return client.post("/api/new").body()
     }
 
-    suspend fun buy() {
-        state_.value = client.post("/api/buy").body()
+    suspend fun buy(): TransferGameState {
+        return client.post("/api/buy").body()
     }
 
-    suspend fun sell() {
-        state_.value = client.post("/api/sell").body()
+    suspend fun sell(): TransferGameState {
+        return client.post("/api/sell").body()
     }
 
-    suspend fun get() {
-        state_.value = try {
+    suspend fun get(): TransferGameState? {
+        return try {
             client.get("/api/state").body()
-        } catch (e: Exception) {
+        } catch (e: NoTransformationFoundException) {
             null
         }
     }
