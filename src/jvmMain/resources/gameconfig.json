@@ -376,6 +376,13 @@
       "url": "/static/cards/exquisite.webp",
       "basePrice": "890",
       "rarity": "Uncommon"
+    },
+    {
+      "displayName": "偉大的中國朋友俄羅斯大學聖彼得堡.jpg",
+      "url": "/static/cards/haochen.webp",
+      "basePrice": "1400",
+      "rarity": "Rare",
+      "curses": ["Chinese"]
     }
   ]
 }

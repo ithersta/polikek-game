@@ -136,7 +136,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                 }
                 variant = ButtonVariant.contained
                 disableElevation = true
-                color = ButtonColor.primary
+                color = if (Curse.Chinese in props.state.card.curses) ButtonColor.error else ButtonColor.primary
                 fullWidth = true
                 disabled = props.state.balance < props.state.purchasePrice || loadingNewCard
                 loading = loadingNewCard
@@ -162,7 +162,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                         loadingNewCard = false
                     }
                 }
-                +"Играть"
+                +if (Curse.Chinese in props.state.card.curses) "新派對卡" else "Играть"
             }
             LoadingButton {
                 sx {
@@ -172,7 +172,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                 }
                 variant = ButtonVariant.contained
                 disableElevation = true
-                color = ButtonColor.primary
+                color = if (Curse.Chinese in props.state.card.curses) ButtonColor.error else ButtonColor.primary
                 fullWidth = true
                 disabled = props.state.isSold || loadingNewCard || loadingSell
                 loading = loadingSell
@@ -187,7 +187,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                         loadingSell = false
                     }
                 }
-                +"Продать"
+                +if (Curse.Chinese in props.state.card.curses) "給偉大的領袖中國" else "Продать"
             }
         }
     }
