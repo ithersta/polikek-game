@@ -411,6 +411,12 @@
       "basePrice": "0",
       "rarity": "Uncommon",
       "curses": ["Doubling"]
+    },
+    {
+      "displayName": "@vladushaaaaaaaaaaaaaaa.jpg",
+      "url": "/static/cards/cyberbullying.webp",
+      "basePrice": "900",
+      "rarity": "Uncommon"
     }
   ]
 }
