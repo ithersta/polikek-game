@@ -31,6 +31,7 @@ val GameScreen = FC<GameScreenProps> { props ->
     var loadingSell by useState(false)
     var showError by useState(false)
     val isDarkTheme = useTheme<Theme>().palette.mode == PaletteMode.dark
+    val canBeSold = props.state.card.curses.all { it.canBeSold }
     Snackbar {
         open = showError
         autoHideDuration = 6000
@@ -110,13 +111,15 @@ val GameScreen = FC<GameScreenProps> { props ->
                     flexGrow = number(1.0)
                 }
             }
-            Typography {
-                sx {
-                    fontWeight = FontWeight.bolder
-                    fontSize = 14.pt
+            if (canBeSold) {
+                Typography {
+                    sx {
+                        fontWeight = FontWeight.bolder
+                        fontSize = 14.pt
+                    }
+                    variant = TypographyVariant.subtitle2
+                    +"+${props.state.salePrice.formatMoney()}"
                 }
-                variant = TypographyVariant.subtitle2
-                +"+${props.state.salePrice.formatMoney()}"
             }
         }
         Box {
@@ -174,7 +177,7 @@ val GameScreen = FC<GameScreenProps> { props ->
                 disableElevation = true
                 color = if (Curse.Chinese in props.state.card.curses) ButtonColor.error else ButtonColor.primary
                 fullWidth = true
-                disabled = props.state.isSold || loadingNewCard || loadingSell
+                disabled = props.state.isSold || loadingNewCard || loadingSell || !canBeSold
                 loading = loadingSell
                 onClick = {
                     coroutineScope.launch {

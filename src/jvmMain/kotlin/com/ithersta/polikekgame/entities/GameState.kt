@@ -1,19 +1,18 @@
 package com.ithersta.polikekgame.entities
 
-import TransferStats
+import Curse
 import TransferGameState
 import com.ionspin.kotlin.bignum.decimal.BigDecimal
 import com.ionspin.kotlin.bignum.integer.BigInteger
 import kotlin.random.Random
 
-class GameState private constructor(
+data class GameState private constructor(
     val balance: BigInteger,
     val hype: BigDecimal,
     val cumulativeInflation: BigDecimal,
     val inflationRate: BigDecimal,
     val card: Card,
     val isSold: Boolean,
-    val isDead: Boolean,
     val stats: Stats,
     val config: GameConfig
 ) {
@@ -24,7 +23,6 @@ class GameState private constructor(
                 balance = config.initialBalance,
                 card = card,
                 isSold = false,
-                isDead = false,
                 hype = config.initialHype,
                 cumulativeInflation = BigDecimal.ONE,
                 inflationRate = config.initialInflationRate,
@@ -40,15 +38,17 @@ class GameState private constructor(
     val salePrice: BigInteger
         get() = (card.basePrice * cumulativeInflation * hype).toBigInteger()
 
+    val isDead: Boolean
+        get() = balance < purchasePrice && isSold
+
     fun afterPurchase(): GameState {
         require(!isDead)
         require(balance >= purchasePrice)
         val generatedCard = config.generateCard(not = card)
-        return GameState(
+        val baseState = copy(
             balance = balance - purchasePrice,
             card = generatedCard,
             isSold = false,
-            isDead = isDead,
             hype = run {
                 val factor = if (isSold) config.hypeSellFactor else config.hypeBuyFactor
                 (hype * factor).coerceIn(config.minHype, config.maxHype)
@@ -56,24 +56,29 @@ class GameState private constructor(
             cumulativeInflation = cumulativeInflation * inflationRate,
             inflationRate = inflationRate + config.inflationRateIncrease,
             stats = stats.withPurchase(purchasePrice, generatedCard),
-            config = config
         )
+        return generatedCard.curses.fold(baseState) { acc, curse ->
+            acc.afterCurseEffect(curse)
+        }
     }
 
     fun afterSale(): GameState {
         require(!isSold)
         require(!isDead)
-        return GameState(
+        require(card.curses.all { it.canBeSold })
+        return copy(
             balance = balance + salePrice,
-            card = card,
             isSold = true,
-            isDead = (balance + salePrice) <= purchasePrice,
-            hype = hype,
-            cumulativeInflation = cumulativeInflation,
-            inflationRate = inflationRate,
             stats = stats.withSale(salePrice),
-            config = config
         )
+    }
+
+    private fun afterCurseEffect(curse: Curse): GameState = when (curse) {
+        Curse.Halving -> copy(
+            balance = balance / 2
+        )
+        Curse.Chinese -> this
+        Curse.LevashovHeight -> this
     }
 }
 
@@ -102,3 +107,4 @@ fun GameState.toTransferGameState(): TransferGameState {
         stats = stats.toTransferStats(config)
     )
 }
+

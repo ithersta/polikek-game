@@ -348,8 +348,8 @@
     {
       "displayName": "и что.jpg",
       "url": "/static/cards/3guys.webp",
-      "basePrice": "900",
-      "rarity": "Uncommon",
+      "basePrice": "400",
+      "rarity": "Common",
       "imageFit": "Contain"
     },
     {
@@ -374,8 +374,8 @@
     {
       "displayName": "\uD83C\uDF77.jpg",
       "url": "/static/cards/exquisite.webp",
-      "basePrice": "890",
-      "rarity": "Uncommon"
+      "basePrice": "550",
+      "rarity": "Common"
     },
     {
       "displayName": "偉大的中國朋友俄羅斯大學聖彼得堡.jpg",
@@ -383,6 +383,20 @@
       "basePrice": "1400",
       "rarity": "Rare",
       "curses": ["Chinese"]
+    },
+    {
+      "displayName": "same prikol twice.jpg",
+      "url": "/static/cards/tall.webp",
+      "basePrice": "900",
+      "rarity": "Uncommon",
+      "curses": ["LevashovHeight"]
+    },
+    {
+      "displayName": "Вы зашли не в тот переулок. −50% денег.jpg",
+      "url": "/static/cards/gopniks.webp",
+      "basePrice": "0",
+      "rarity": "Uncommon",
+      "curses": ["Halving"]
     }
   ]
 }
