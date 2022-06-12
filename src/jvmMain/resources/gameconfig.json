@@ -392,7 +392,7 @@
       "curses": ["LevashovHeight"]
     },
     {
-      "displayName": "вы зашли не в тот переулок. −50% денег.jpg",
+      "displayName": "вы зашли не в тот переулок.jpg (-50% баланса)",
       "url": "/static/cards/gopniks.webp",
       "basePrice": "0",
       "rarity": "Uncommon",
@@ -404,6 +404,13 @@
       "basePrice": "1300",
       "rarity": "Rare",
       "curses": ["Jordan"]
+    },
+    {
+      "displayName": "добрый батя.jpg (баланс ×2)",
+      "url": "/static/cards/nude.webp",
+      "basePrice": "0",
+      "rarity": "Uncommon",
+      "curses": ["Doubling"]
     }
   ]
 }
