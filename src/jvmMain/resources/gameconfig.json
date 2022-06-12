@@ -392,11 +392,18 @@
       "curses": ["LevashovHeight"]
     },
     {
-      "displayName": "Вы зашли не в тот переулок. −50% денег.jpg",
+      "displayName": "вы зашли не в тот переулок. −50% денег.jpg",
       "url": "/static/cards/gopniks.webp",
       "basePrice": "0",
       "rarity": "Uncommon",
       "curses": ["Halving"]
+    },
+    {
+      "displayName": "إِنَّ اللَّهَ لا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا مَا بِأَنْفُسِهِمْ.jpg",
+      "url": "/static/cards/almuhidat.webp",
+      "basePrice": "1300",
+      "rarity": "Rare",
+      "curses": ["Jordan"]
     }
   ]
 }

@@ -165,7 +165,11 @@ val GameScreen = FC<GameScreenProps> { props ->
                         loadingNewCard = false
                     }
                 }
-                +if (Curse.Chinese in props.state.card.curses) "新派對卡" else "Играть"
+                +when {
+                    Curse.Chinese in props.state.card.curses -> "新派對卡"
+                    Curse.Jordan in props.state.card.curses -> "العب لعبة الشيطان"
+                    else -> "Играть"
+                }
             }
             LoadingButton {
                 sx {
@@ -190,7 +194,11 @@ val GameScreen = FC<GameScreenProps> { props ->
                         loadingSell = false
                     }
                 }
-                +if (Curse.Chinese in props.state.card.curses) "給偉大的領袖中國" else "Продать"
+                +when {
+                    Curse.Chinese in props.state.card.curses -> "給偉大的領袖中國"
+                    Curse.Jordan in props.state.card.curses -> "باع"
+                    else -> "Продать"
+                }
             }
         }
     }

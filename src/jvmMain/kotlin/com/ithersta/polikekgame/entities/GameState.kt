@@ -77,8 +77,10 @@ data class GameState private constructor(
         Curse.Halving -> copy(
             balance = balance / 2
         )
-        Curse.Chinese -> this
-        Curse.LevashovHeight -> this
+        Curse.Doubling -> copy(
+            balance = balance * 2
+        )
+        Curse.Chinese, Curse.LevashovHeight, Curse.Jordan -> this
     }
 }
 
