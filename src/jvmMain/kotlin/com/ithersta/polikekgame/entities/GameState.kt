@@ -85,7 +85,6 @@ data class GameState private constructor(
 }
 
 private tailrec fun GameConfig.generateCard(not: Card? = null): Card {
-    return cards.last()
     val random = Random.nextDouble()
     val requiredRarity = probabilities
         .asSequence()
