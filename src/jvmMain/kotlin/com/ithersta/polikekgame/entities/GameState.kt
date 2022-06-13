@@ -38,8 +38,11 @@ data class GameState private constructor(
     val salePrice: BigInteger
         get() = (card.basePrice * cumulativeInflation * hype).toBigInteger()
 
+    private val canBeSold: Boolean
+        get() = card.curses.all { it.canBeSold }
+
     val isDead: Boolean
-        get() = balance < purchasePrice && isSold
+        get() = (balance < purchasePrice) && (isSold || !canBeSold)
 
     fun afterPurchase(): GameState {
         require(!isDead)
@@ -65,7 +68,7 @@ data class GameState private constructor(
     fun afterSale(): GameState {
         require(!isSold)
         require(!isDead)
-        require(card.curses.all { it.canBeSold })
+        require(canBeSold)
         return copy(
             balance = balance + salePrice,
             isSold = true,
