@@ -417,6 +417,12 @@
       "url": "/static/cards/cyberbullying.webp",
       "basePrice": "900",
       "rarity": "Uncommon"
+    },
+    {
+      "displayName": "vladislam.jpg",
+      "url": "/static/cards/vladislam.webp",
+      "basePrice": "600",
+      "rarity": "Common"
     }
   ]
 }
