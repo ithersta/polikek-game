@@ -3,7 +3,6 @@ package ui
 import GameClient
 import Rarity
 import TransferGameState
-import csstype.*
 import kotlinx.coroutines.launch
 import mui.lab.LoadingButton
 import mui.material.Box
@@ -16,6 +15,7 @@ import react.FC
 import react.Props
 import react.StateSetter
 import react.useState
+import web.cssom.*
 
 external interface LoseScreenProps : Props {
     var state: TransferGameState

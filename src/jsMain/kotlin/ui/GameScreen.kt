@@ -2,7 +2,6 @@ package ui
 
 import GameClient
 import TransferGameState
-import csstype.*
 import emotion.react.css
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -16,6 +15,7 @@ import mui.system.sx
 import org.w3c.dom.Image
 import react.*
 import react.dom.html.ReactHTML.img
+import web.cssom.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine

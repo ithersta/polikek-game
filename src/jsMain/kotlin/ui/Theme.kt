@@ -1,11 +1,11 @@
 package ui
 
 import Rarity
-import csstype.Color
-import csstype.px
-import kotlinx.js.jso
+import js.core.jso
 import mui.material.PaletteMode
 import mui.material.styles.createTheme
+import web.cssom.Color
+import web.cssom.px
 
 private const val Neutral99 = "#FFFBFE"
 private const val Purple40 = "#6750A4"

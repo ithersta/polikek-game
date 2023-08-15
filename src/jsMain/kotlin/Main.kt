@@ -2,7 +2,9 @@ import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.launch
 import org.w3c.dom.url.URLSearchParams
+import react.ElementType
 import react.create
+import react.createElement
 import react.dom.client.createRoot
 import ui.Application
 import ui.coroutineScope
@@ -25,7 +27,7 @@ fun main() {
             this.client = client
             this.startState = startState
         }
-        val root = createRoot(container)
+        val root = createRoot(container as web.dom.Element)
         root.render(application)
     }
 }

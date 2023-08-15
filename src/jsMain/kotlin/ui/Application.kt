@@ -2,8 +2,6 @@ package ui
 
 import GameClient
 import TransferGameState
-import csstype.px
-import csstype.vh
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -16,6 +14,8 @@ import mui.system.sx
 import react.FC
 import react.Props
 import react.useState
+import web.cssom.px
+import web.cssom.vh
 
 val coroutineScope = CoroutineScope(Job() + Dispatchers.Default)
 

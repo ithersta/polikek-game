@@ -1,0 +1,19 @@
+version: '3.9'
+
+secrets:
+  token:
+    file: /root/polikek/token
+
+services:
+  bot:
+    image: ithersta/projects:polikek
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    secrets:
+      - token
+    environment:
+      TELEGRAM_TOKEN_FILE: /run/secrets/token
+      PORT: 80
+      HOSTNAME: 0.0.0.0
+      PUBLIC_HOSTNAME: https://polikek.ithersta.com

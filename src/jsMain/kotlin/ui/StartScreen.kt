@@ -2,7 +2,6 @@ package ui
 
 import GameClient
 import TransferGameState
-import csstype.*
 import kotlinx.coroutines.launch
 import mui.lab.LoadingButton
 import mui.material.Box
@@ -15,6 +14,7 @@ import react.FC
 import react.Props
 import react.StateSetter
 import react.useState
+import web.cssom.*
 
 external interface StartScreenProps : Props {
     var setState: StateSetter<TransferGameState?>

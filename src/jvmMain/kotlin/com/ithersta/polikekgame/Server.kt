@@ -6,6 +6,7 @@ import com.ithersta.polikekgame.configuration.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import org.koin.core.context.GlobalContext
 import org.koin.ktor.ext.get
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
@@ -15,11 +16,13 @@ fun main() {
     embeddedServer(
         Netty,
         port = System.getenv("PORT").toInt(),
-        host = System.getenv("HOSTNAME").toString()
+        host = System.getenv("HOSTNAME")
     ) {
-        install(Koin) {
-            slf4jLogger()
-            modules(polikekGameModule)
+        if (GlobalContext.getOrNull() == null) {
+            install(Koin) {
+                slf4jLogger()
+                modules(polikekGameModule)
+            }
         }
         configureSerialization()
         configureAuthentication()

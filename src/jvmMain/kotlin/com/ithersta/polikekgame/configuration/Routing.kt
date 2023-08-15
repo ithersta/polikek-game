@@ -35,10 +35,7 @@ fun HTML.index() {
 
 fun Application.configureRouting() {
     routing {
-        static("/static") {
-            staticBasePackage = "static"
-            resources()
-        }
+        staticResources("/static", "static")
         get("/") {
             call.respondHtml(HttpStatusCode.OK, HTML::index)
         }

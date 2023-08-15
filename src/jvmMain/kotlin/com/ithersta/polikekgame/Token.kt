@@ -4,19 +4,20 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.interfaces.Claim
-import com.elbekD.bot.types.CallbackQuery
+import com.elbekd.bot.types.CallbackQuery
 import com.ithersta.polikekgame.entities.GameIdentifier
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*
 import io.ktor.util.pipeline.*
+import java.io.File
 
 private const val USER_ID = "user_id"
 private const val MESSAGE_ID = "message_id"
 private const val CHAT_ID = "chat_id"
 private const val INLINE_MESSAGE_ID = "inline_message_id"
 
-private val secret = System.getenv("JWT_SECRET").toString()
+private val secret = File(System.getenv("TELEGRAM_TOKEN_FILE")).readText()
 private val algorithm = Algorithm.HMAC256(secret)
 
 val JwtVerifier: JWTVerifier = JWT.require(algorithm).build()
@@ -36,8 +37,8 @@ fun CallbackQuery.createToken(): String {
     return JWT.create()
         .withClaim(USER_ID, from.id)
         .withClaim(CHAT_ID, message?.chat?.id)
-        .withClaim(MESSAGE_ID, message?.message_id)
-        .withClaim(INLINE_MESSAGE_ID, inline_message_id)
+        .withClaim(MESSAGE_ID, message?.messageId)
+        .withClaim(INLINE_MESSAGE_ID, inlineMessageId)
         .sign(algorithm)
 }
 
